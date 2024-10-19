@@ -1,8 +1,8 @@
 import 'package:flipkart/core/storage_helper.dart';
 import 'package:flipkart/model/user_model.dart';
+import 'package:flipkart/screen/dashboard_screen.dart';
 import 'package:flipkart/screen/signup_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -22,8 +22,9 @@ class _LoginScreenState extends State<LoginScreen> {
     if (savedUser != null &&
         savedUser.email == email &&
         savedUser.password == password) {
-      // Login successful
-      print('Login successful');
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+        return DashboardScreen();
+      }));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
